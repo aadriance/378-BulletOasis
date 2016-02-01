@@ -27,7 +27,7 @@ public class ScrollingRandomWorld extends ScrollingWorld
         
         setPaintOrder(PhysWalker.class);
         
-        PhysWalker physwalker = new PhysShooter();
+        Player physwalker = new Player();
         addObject(physwalker,282,194);
         physwalker.setLocation(283,188);
 

@@ -18,11 +18,11 @@ public class PhysWalker extends PhysObj
         
         if ( Greenfoot.isKeyDown("left") )
         {
-            moveCollidable(getX() - 4, getY());
+            moveCollidable(getX() - 3, getY());
         }
         else if ( Greenfoot.isKeyDown("right") )
         {
-            moveCollidable(getX() + 4, getY());
+            moveCollidable(getX() + 3, getY());
         }
         
         if ( Greenfoot.isKeyDown("up") ) {
