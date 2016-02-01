@@ -1,0 +1,21 @@
+#BlueJ class context
+comment0.target=PhysObj
+comment0.text=\n\ Write\ a\ description\ of\ class\ PhysObj\ here.\n\ \n\ @author\ (your\ name)\ \n\ @version\ (a\ version\ number\ or\ a\ date)\n
+comment1.params=
+comment1.target=java.lang.Float\ getYDis()
+comment2.params=
+comment2.target=java.lang.Float\ getVf()
+comment3.params=
+comment3.target=void\ act()
+comment3.text=\n\ Act\ -\ do\ whatever\ the\ Ball\ wants\ to\ do.\ This\ method\ is\ called\ whenever\n\ the\ 'Act'\ or\ 'Run'\ button\ gets\ pressed\ in\ the\ environment.\n
+comment4.params=
+comment4.target=int\ getDX()
+comment5.params=newVal
+comment5.target=void\ setDx(int)
+comment6.params=newVal
+comment6.target=void\ setVi(int)
+comment7.params=
+comment7.target=float\ getVi()
+comment8.params=
+comment8.target=boolean\ getOnGround()
+numComments=9
