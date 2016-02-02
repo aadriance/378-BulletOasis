@@ -15,14 +15,15 @@ public class PhysShooter extends PhysWalker
     public void act() 
     {
         super.act();
-        if(Greenfoot.mousePressed(null)) {
-            shoot(Greenfoot.getMouseInfo());
-        }
     }
     
     public void shoot(MouseInfo mouse) {
-        double dx = mouse.getX() - getX();
-        double dy = mouse.getY() - getY();
+        shoot(mouse.getX(), mouse.getY());
+    }
+    
+    public void shoot(double x, double y) {
+        double dx = x - getX();
+        double dy = y - getY();
         double unitScale = Math.sqrt(dx * dx + dy * dy);
         dx /= unitScale;
         dy /= unitScale;
@@ -30,7 +31,7 @@ public class PhysShooter extends PhysWalker
         
         int offset = getImage().getWidth()/2;
         
-        if (mouse.getX() < getX()) {
+        if (x < getX()) {
             offset *= -1;
         }
         

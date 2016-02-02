@@ -41,6 +41,11 @@ public class ScrollingRandomWorld extends ScrollingWorld
                 Scenery scenery = new Scenery();
                 addObject(scenery, i, getHeight() - temp.getImage().getHeight()/2 - scenery.getImage().getHeight());
             }
+            
+            if (Greenfoot.getRandomNumber(100) > 95) {
+                NPC enemy = new NPC();
+                addObject(enemy, i, getHeight() - temp.getImage().getHeight()/2 - enemy.getImage().getHeight());
+            }
         }
         LevelEnd checkPoint = new LevelEnd();
         addObject(checkPoint, getScrollSize() + getWidth() - checkPoint.getImage().getHeight()/2, getHeight() -  checkPoint.getImage().getHeight());

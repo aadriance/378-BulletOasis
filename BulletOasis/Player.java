@@ -8,7 +8,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class Player extends PhysShooter
 {
-    ScrollingActor subActor;
+    Actor subActor;
     String[] walkCycle = {"player-stand.png", "player-walk2.png", "player-walk3.png"};
     int step = 0;
     int dir = 1;
@@ -24,16 +24,16 @@ public class Player extends PhysShooter
         frame += 1;
         
         if (subActor == null) {
-            subActor = new ScrollingActor();
+            subActor = new SubImage();
             getWorld().addObject(subActor, getX(), getY());
         }
-        subActor.setLocation(getX(), getY());
         super.act();
         
-        if (frame % 4 == 0) { 
+        if (frame % 3 == 0) { 
         
            if ( Greenfoot.isKeyDown("left") )
            {
+               moveLeft();
                step = (step + 1) % walkCycle.length;
                if (dir == 1) {
                    dir *= -1;
@@ -41,6 +41,7 @@ public class Player extends PhysShooter
            }
            else if ( Greenfoot.isKeyDown("right") )
            {
+               moveRight();
                step = (step + 1) % walkCycle.length;
                if (dir == -1) {
                    dir *= -1;
@@ -49,17 +50,20 @@ public class Player extends PhysShooter
            else {
                step = 0;
            }
+           
+           if ( Greenfoot.isKeyDown("up") ) {
+            jump();
+           }
+           
            subActor.setImage(walkCycle[step]);
            if (dir == -1) {
                subActor.getImage().mirrorHorizontally();
            }
+           subActor.setLocation(getX(), getY());
         }
         
-        subActor.setLocation(getX(), getY());
-        if ( Greenfoot.isKeyDown("up") ) {
-            if (getOnGround()) {
-               setVi(-7);
-            }
+        if(Greenfoot.mousePressed(null)) {
+            shoot(Greenfoot.getMouseInfo());
         }
     } 
     

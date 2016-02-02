@@ -15,20 +15,17 @@ public class PhysWalker extends PhysObj
     public void act() 
     {
         super.act();
-        
-        if ( Greenfoot.isKeyDown("left") )
-        {
-            moveCollidable(getX() - 3, getY());
-        }
-        else if ( Greenfoot.isKeyDown("right") )
-        {
-            moveCollidable(getX() + 3, getY());
-        }
-        
-        if ( Greenfoot.isKeyDown("up") ) {
-            if (getOnGround()) {
+    } 
+    
+    public void moveLeft() {
+        moveCollidable(getX() - 5, getY()); 
+    }
+    public void moveRight() {
+        moveCollidable(getX() + 5, getY());
+    }
+    public void jump() {
+        if (getOnGround()) {
                setVi(-7);
-            }
-        }
-    }    
+            } 
+    }
 }
