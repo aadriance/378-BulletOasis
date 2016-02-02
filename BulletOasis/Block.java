@@ -17,7 +17,8 @@ public class Block extends Collidable
 
     }  
     
-    public Block() {
+    public Block(String spritePath) {
+        setImage(spritePath);
         //canCollide = false;
     }
 }

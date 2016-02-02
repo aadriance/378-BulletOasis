@@ -3,5 +3,16 @@ comment0.target=PhysWalker
 comment0.text=\r\n\ Write\ a\ description\ of\ class\ PhysWalker\ here.\r\n\ \r\n\ @author\ (your\ name)\ \r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
 comment1.params=
 comment1.target=void\ act()
+<<<<<<< HEAD
+comment1.text=\n\ Act\ -\ do\ whatever\ the\ PhysWalker\ wants\ to\ do.\ This\ method\ is\ called\ whenever\n\ the\ 'Act'\ or\ 'Run'\ button\ gets\ pressed\ in\ the\ environment.\n
+comment2.params=
+comment2.target=void\ moveLeft()
+comment3.params=
+comment3.target=void\ moveRight()
+comment4.params=
+comment4.target=void\ jump()
+numComments=5
+=======
 comment1.text=\r\n\ Act\ -\ do\ whatever\ the\ PhysWalker\ wants\ to\ do.\ This\ method\ is\ called\ whenever\r\n\ the\ 'Act'\ or\ 'Run'\ button\ gets\ pressed\ in\ the\ environment.\r\n
 numComments=2
+>>>>>>> 1b3f8a41808a68d94353409bebf1f36831113560
