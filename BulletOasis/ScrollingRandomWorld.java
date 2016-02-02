@@ -33,9 +33,9 @@ public class ScrollingRandomWorld extends ScrollingWorld
 
         setScrollee(physwalker);
         
-        Block temp = new Block();
+        Block temp;
         for(int i = 0; i <= getScrollSize() + getWidth(); i += temp.getImage().getWidth()) {
-            temp = new Block();
+            temp = new Block("sand-1.png");
             addObject(temp, i, getHeight() - temp.getImage().getHeight()/2);
             if (Greenfoot.getRandomNumber(100) > 90) {
                 Scenery scenery = new Scenery();
