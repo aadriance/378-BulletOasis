@@ -8,4 +8,6 @@ comment2.params=w\ h\ tile\ bool
 comment2.target=GameWorld(int,\ int,\ int,\ boolean)
 comment3.params=
 comment3.target=void\ nextWorld()
-numComments=4
+comment4.params=
+comment4.target=void\ restart()
+numComments=5

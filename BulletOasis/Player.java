@@ -10,9 +10,13 @@ public class Player extends PhysShooter
 {
     Actor subActor;
     String[] walkCycle = {"player-stand.png", "player-walk2.png", "player-walk3.png"};
+    String shoot = "player-shoot.png";
+    String jump = "player-jump.png";
+    String shootJump = "player-jump-shoot.png";
     int step = 0;
     int dir = 1;
     int frame = 0;
+    boolean flipped = false;
     
     /**
      * Act - do whatever the Player wants to do. This method is called whenever
@@ -29,41 +33,61 @@ public class Player extends PhysShooter
         }
         super.act();
         
-        if (frame % 3 == 0) { 
-        
-           if ( Greenfoot.isKeyDown("left") )
+        if (frame % 10 == 0) { 
+           flipped = false;
+           if ( Greenfoot.isKeyDown("a") ||  Greenfoot.isKeyDown("d"))
            {
-               moveLeft();
                step = (step + 1) % walkCycle.length;
-               if (dir == 1) {
-                   dir *= -1;
-               }
-           }
-           else if ( Greenfoot.isKeyDown("right") )
-           {
-               moveRight();
-               step = (step + 1) % walkCycle.length;
-               if (dir == -1) {
-                   dir *= -1;
-               }
            }
            else {
                step = 0;
            }
            
-           if ( Greenfoot.isKeyDown("up") ) {
-            jump();
-           }
-           
            subActor.setImage(walkCycle[step]);
-           if (dir == -1) {
-               subActor.getImage().mirrorHorizontally();
+           
+        }
+        
+        subActor.setLocation(getX(), getY());
+        
+        if ( Greenfoot.isKeyDown("a") )
+           {
+               moveLeft();
            }
-           subActor.setLocation(getX(), getY());
+           else if ( Greenfoot.isKeyDown("d") )
+           {
+               moveRight();
+           }
+        
+        if ( Greenfoot.isKeyDown("w") ) {
+            flipped = false;
+            frame = 0;
+            jump();
+            subActor.setImage(jump);
+           }
+        
+        if(dir == 1 && Greenfoot.getMouseInfo().getX() < getX()) {
+            dir *= -1;
+        }
+        
+        if(Greenfoot.getMouseInfo() != null && dir == -1 && Greenfoot.getMouseInfo().getX() > getX()) {
+            dir *= -1;
         }
         
         if(Greenfoot.mousePressed(null)) {
+            frame = 0;
+            flipped = false;
             shoot(Greenfoot.getMouseInfo());
+            if(getOnGround()) {
+               subActor.setImage(shoot); 
+            }
+            else {
+                subActor.setImage(shootJump);
+            }
+        }
+        
+        if (dir == -1 && !flipped) {
+               flipped = true;
+               subActor.getImage().mirrorHorizontally();
         }
     } 
     
@@ -71,4 +95,6 @@ public class Player extends PhysShooter
         super();
         getImage().setTransparency(1);
     }
+    
+    public void die() {}
 }

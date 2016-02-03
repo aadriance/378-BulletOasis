@@ -18,10 +18,10 @@ public class PhysWalker extends PhysObj
     } 
     
     public void moveLeft() {
-        moveCollidable(getX() - 5, getY()); 
+        moveCollidable(getX() - 3, getY()); 
     }
     public void moveRight() {
-        moveCollidable(getX() + 5, getY());
+        moveCollidable(getX() + 3, getY());
     }
     public void jump() {
         if (getOnGround()) {

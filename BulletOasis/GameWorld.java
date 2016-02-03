@@ -36,4 +36,16 @@ public class GameWorld extends World
         
         }
     }
+    
+    public static void restart() {
+         GameWorld[] newWorlds = {new TitleScreen(), new Intro(), new ScrollingRandomWorld(),
+         new GotBullet(), new ScrollingRandomWorld(), new FoundBoss(), new ScrollingRandomWorld(),
+         new Ending()};
+         worlds = newWorlds;
+        if (currWorld < worlds.length - 1) {
+            currWorld = 0;
+            Greenfoot.setWorld(worlds[0]);
+        
+        }
+    }
 }

@@ -8,6 +8,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class PhysShooter extends PhysWalker
 {
+    int life = 3;
     /**
      * Act - do whatever the PhysShooter wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
@@ -15,6 +16,11 @@ public class PhysShooter extends PhysWalker
     public void act() 
     {
         super.act();
+        Bullet bullet = (Bullet)getOneIntersectingObject(Bullet.class);
+        if (bullet != null && bullet.owner != this) {
+           getWorld().removeObject(bullet);
+           hit();
+        }
     }
     
     public void shoot(MouseInfo mouse) {
@@ -28,6 +34,7 @@ public class PhysShooter extends PhysWalker
         dx /= unitScale;
         dy /= unitScale;
         Bullet bull = new Bullet(dx, dy);
+        bull.owner = this;
         
         int offset = getImage().getWidth()/2;
         
@@ -36,5 +43,16 @@ public class PhysShooter extends PhysWalker
         }
         
         getWorld().addObject(bull,getX() + offset,getY());
+    }
+    
+    public void hit() {
+        life -= 1;
+        if(life == 0) {
+            die();
+        }
+    }
+    
+    public void die() {
+        getWorld().removeObject(this);
     }
 }

@@ -11,6 +11,7 @@ public class Bullet extends Collidable
     double speed = 10;
     double dx;
     double dy;
+    Actor owner;
     public Bullet(double deltaX, double deltaY) {
         setCanCollide(false);
         dx = deltaX * speed;
