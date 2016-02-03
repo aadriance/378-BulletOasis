@@ -15,8 +15,6 @@ public class Bullet extends Collidable
         setCanCollide(false);
         dx = deltaX * speed;
         dy = deltaY * speed;
-        System.out.println(dx);
-        System.out.println(dy);
         double angle = Math.atan2(dy,dx)*180.0/Math.PI;
         setRotation( (int)angle );
     }

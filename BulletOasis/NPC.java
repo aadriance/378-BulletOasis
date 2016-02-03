@@ -26,7 +26,7 @@ public class NPC extends PhysShooter
         List<Player> players = getObjectsInRange(getWorld().getHeight(), Player.class);
         super.act();
         
-        if(players != null && players.size() > 0 && frame%35 == 0 && Greenfoot.getRandomNumber(100) > 60) {
+        if(players != null && players.size() > 0 && frame%40 == 0 && Greenfoot.getRandomNumber(100) > 65) {
             shoot(players.get(0).getX(), players.get(0).getY());
         }
     }    
