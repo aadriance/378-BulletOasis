@@ -34,11 +34,15 @@ public class UI extends Actor
         getImage().setColor(Color.black);
         getImage().drawString("Health:", padding, padding);
         getImage().drawString("Buccaneer:", padding, padding * 2);
+        getImage().drawString("Bullets:", padding, padding * 3);
         //health bar
         getImage().setColor(Color.red);
         getImage().fillRect(padding + wordOffset, padding/2, player.life * barSize, padding /2);
         //bucc bar
         getImage().setColor(Color.blue);
         getImage().fillRect(padding + wordOffset, padding + padding/2, player.buccaneer * barSize, padding /2);
+        //bullets bar
+        getImage().setColor(Color.yellow);
+        getImage().fillRect(padding + wordOffset, 2 *padding + padding/2, player.bullets * barSize, padding /2);
     }
 }

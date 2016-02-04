@@ -20,6 +20,9 @@ public class Player extends PhysShooter
     boolean dead = false;
     int buccaneer = 0;
     int animDelay = 10;
+    boolean reloading = false;
+    int bullets = 6;
+    int idleCount = 0;
     
     /**
      * Act - do whatever the Player wants to do. This method is called whenever
@@ -58,10 +61,19 @@ public class Player extends PhysShooter
            
            subActor.setImage(walkCycle[step]);
            
+           if (idleCount >= 200) {
+            subActor.setImage("player-idle2.png");
+           }
+           
         }
         
         
-        if(Greenfoot.mousePressed(null)) {
+        if(Greenfoot.mousePressed(null) && !reloading) {
+            bullets -= 1;
+            idleCount = 0;
+            if(bullets == 0) {
+                reloading = true;
+            }
             frame += (frame / animDelay) * animDelay;
             flipped = false;
             shoot(Greenfoot.getMouseInfo());
@@ -90,6 +102,12 @@ public class Player extends PhysShooter
             subActor.setImage(jump);
         }
         
+        if ( Greenfoot.isKeyDown("r") ) {
+            if (bullets < 6) {
+                reloading = true;
+            }
+        }
+        
         if(Greenfoot.getMouseInfo() != null && Greenfoot.getMouseInfo().getX() < getX()) {
             dir = -1;
         }
@@ -108,6 +126,20 @@ public class Player extends PhysShooter
         
         if(frame % 100 == 0 && buccaneer < 10) {
             buccaneer += 1;
+        }
+        
+        if(frame % 40 == 0 && reloading) {
+            bullets += 1;
+            if (bullets == 6) {
+                reloading = false;
+            }
+        }
+        
+        if (Greenfoot.getKey() == null && !Greenfoot.mousePressed(null)) {
+            idleCount += 1;
+        }
+        else {
+            idleCount = 0;
         }
 
         subActor.setLocation(getX() + dir * 5, getY());
