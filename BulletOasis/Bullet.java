@@ -8,7 +8,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class Bullet extends Collidable
 {
-    double speed = 10;
+    double speed = 8;
     double dx;
     double dy;
     Actor owner;

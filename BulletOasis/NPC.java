@@ -10,6 +10,7 @@ import java.util.List;
 public class NPC extends PhysShooter
 {
     int frame = 0;
+    boolean dead = false;
     
     public NPC() {
         super();
@@ -22,12 +23,39 @@ public class NPC extends PhysShooter
      */
     public void act() 
     {
-        frame += 1;
-        List<Player> players = getObjectsInRange(getWorld().getHeight(), Player.class);
-        super.act();
+        if(getX() > 0 && getX() < getWorld().getWidth()) {
+           frame += 1;
+           List<Player> players = getObjectsInRange(getWorld().getHeight(), Player.class);
+           super.act();
+           
+           if(frame%15 == 0 && players != null && players.size() > 0 && !dead) {
+              setImage("enem1.png");
+              if(players.get(0).getX() < getX()) {
+                 getImage().mirrorHorizontally();
+              }      
+           }
         
-        if(players != null && players.size() > 0 && frame%40 == 0 && Greenfoot.getRandomNumber(100) > 65) {
-            shoot(players.get(0).getX(), players.get(0).getY());
-        }
-    }    
+        
+           if(players != null && players.size() > 0 && frame%40 == 0 &&
+           Greenfoot.getRandomNumber(100) > 65 && !dead) {
+               shoot(players.get(0).getX(), players.get(0).getY());
+           }
+           
+           if(dead && frame == 100) {
+               getWorld().removeObject(this);
+           }
+       }
+    }
+    
+    public void die() {
+        frame = 0;
+        setImage("enem1-dead.png");
+        dead = true;
+        List<Player> players = getObjectsInRange(getWorld().getHeight(), Player.class);
+        if(players != null && players.size() > 0) {
+              if(players.get(0).getX() < getX()) {
+                 getImage().mirrorHorizontally();
+              }      
+           }
+    }
 }

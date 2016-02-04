@@ -25,7 +25,7 @@ public class PhysWalker extends PhysObj
     }
     public void jump() {
         if (getOnGround()) {
-               setVi(-7);
+               setVi(-9);
             } 
     }
 }

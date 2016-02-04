@@ -17,6 +17,9 @@ public class Player extends PhysShooter
     int dir = 1;
     int frame = 0;
     boolean flipped = false;
+    boolean dead = false;
+    int buccaneer = 0;
+    int animDelay = 10;
     
     /**
      * Act - do whatever the Player wants to do. This method is called whenever
@@ -27,13 +30,23 @@ public class Player extends PhysShooter
         
         frame += 1;
         
+        if (dead) {
+            if (frame == 200) {
+                Greenfoot.setWorld(new GameOver());
+            }
+            return;
+        }
+        
         if (subActor == null) {
             subActor = new SubImage();
+            UI ui = new UI(this);
             getWorld().addObject(subActor, getX(), getY());
+            getWorld().addObject(ui, ui.getImage().getWidth()/2, ui.getImage().getHeight()/2);
+            life = 10;
         }
         super.act();
         
-        if (frame % 10 == 0) { 
+        if (frame % animDelay == 0) { 
            flipped = false;
            if ( Greenfoot.isKeyDown("a") ||  Greenfoot.isKeyDown("d"))
            {
@@ -47,7 +60,19 @@ public class Player extends PhysShooter
            
         }
         
-        subActor.setLocation(getX(), getY());
+        
+        if(Greenfoot.mousePressed(null)) {
+            frame += (frame / animDelay) * animDelay;
+            flipped = false;
+            shoot(Greenfoot.getMouseInfo());
+            if(getOnGround()) {
+               subActor.setImage(shoot); 
+            }
+            else {
+                subActor.setImage(shootJump);
+            }
+            return;
+        }
         
         if ( Greenfoot.isKeyDown("a") )
            {
@@ -60,35 +85,32 @@ public class Player extends PhysShooter
         
         if ( Greenfoot.isKeyDown("w") ) {
             flipped = false;
-            frame = 0;
+            frame += (frame / animDelay) * animDelay;
             jump();
             subActor.setImage(jump);
-           }
-        
-        if(dir == 1 && Greenfoot.getMouseInfo().getX() < getX()) {
-            dir *= -1;
         }
         
-        if(Greenfoot.getMouseInfo() != null && dir == -1 && Greenfoot.getMouseInfo().getX() > getX()) {
-            dir *= -1;
+        if(Greenfoot.getMouseInfo() != null && Greenfoot.getMouseInfo().getX() < getX()) {
+            dir = -1;
         }
-        
-        if(Greenfoot.mousePressed(null)) {
-            frame = 0;
-            flipped = false;
-            shoot(Greenfoot.getMouseInfo());
-            if(getOnGround()) {
-               subActor.setImage(shoot); 
-            }
-            else {
-                subActor.setImage(shootJump);
-            }
+        else {
+            dir = 1;
         }
         
         if (dir == -1 && !flipped) {
                flipped = true;
                subActor.getImage().mirrorHorizontally();
         }
+        if (dir == 1 && flipped) {
+               flipped = false;
+               subActor.getImage().mirrorHorizontally();
+        }
+        
+        if(frame % 100 == 0 && buccaneer < 10) {
+            buccaneer += 1;
+        }
+
+        subActor.setLocation(getX() + dir * 5, getY());
     } 
     
     public Player() {
@@ -96,5 +118,13 @@ public class Player extends PhysShooter
         getImage().setTransparency(1);
     }
     
-    public void die() {}
+    public void die() {
+       frame = 0;
+       dead = true;
+       setImage("player-dead.png");
+       if(flipped) {
+        getImage().mirrorHorizontally();
+       }
+       getWorld().removeObject(subActor);
+    }
 }

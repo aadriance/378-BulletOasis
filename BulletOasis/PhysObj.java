@@ -12,7 +12,6 @@ public class PhysObj extends Collidable
     float vi = 0;
     int a = 9;
     float t = 0;
-    boolean onGround = true;
     
     public Float getYDis() {
           return vi*t + (a * t * t)/2;
@@ -34,13 +33,6 @@ public class PhysObj extends Collidable
         }
         moveCollidable(getX() + getDX(), getY());
         
-        if(moveCollidable(getX(), getY() + 1) == false) {
-            onGround = true;
-        }
-        else {
-            onGround = false;
-        }
-        moveCollidable(getX(), getY() - 1);
     }
     
     public int getDX() {
@@ -57,6 +49,7 @@ public class PhysObj extends Collidable
         return vi;
     }
     public boolean getOnGround() {
-        return onGround;
+        Collidable obj = (Collidable)getOneObjectAtOffset(0, getImage().getHeight(), Collidable.class);
+        return obj != null && obj.getCanCollide();
     }
 }

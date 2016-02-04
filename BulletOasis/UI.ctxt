@@ -1,0 +1,11 @@
+#BlueJ class context
+comment0.target=UI
+comment0.text=\n\ Write\ a\ description\ of\ class\ UI\ here.\n\ \n\ @author\ (your\ name)\ \n\ @version\ (a\ version\ number\ or\ a\ date)\n
+comment1.params=newPlayer
+comment1.target=UI(Player)
+comment2.params=
+comment2.target=void\ act()
+comment2.text=\n\ Act\ -\ do\ whatever\ the\ UI\ wants\ to\ do.\ This\ method\ is\ called\ whenever\n\ the\ 'Act'\ or\ 'Run'\ button\ gets\ pressed\ in\ the\ environment.\n
+comment3.params=
+comment3.target=void\ imageUpdate()
+numComments=4

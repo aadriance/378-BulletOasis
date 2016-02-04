@@ -47,8 +47,28 @@ public class ScrollingRandomWorld extends ScrollingWorld
                 NPC enemy = new NPC();
                 addObject(enemy, i, getHeight() - temp.getImage().getHeight()/2 - enemy.getImage().getHeight());
             }
+            
+            if (Greenfoot.getRandomNumber(100) > 85) {
+                spawnPlatform(i, getHeight()/2 + 60);
+            }
+            
         }
         LevelEnd checkPoint = new LevelEnd();
         addObject(checkPoint, getScrollSize() + getWidth() - checkPoint.getImage().getWidth() * 2, getHeight() -  checkPoint.getImage().getHeight()/2);
+    }
+    
+    private void spawnPlatform(int startX, int startY) {
+        int offset = 0;
+        for(int i = 0; i < 4; i++) {
+            Block plat = new Block("sand-2.png");
+            addObject(plat, startX + offset, startY);
+            
+            if (Greenfoot.getRandomNumber(100) > 75) {
+                NPC enemy = new NPC();
+                addObject(enemy, startX + offset, startY - plat.getImage().getHeight()/2 - enemy.getImage().getHeight());
+            }
+            
+            offset += plat.getImage().getWidth();
+        }
     }
 }

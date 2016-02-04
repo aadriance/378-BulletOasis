@@ -17,7 +17,7 @@ public class PhysShooter extends PhysWalker
     {
         super.act();
         Bullet bullet = (Bullet)getOneIntersectingObject(Bullet.class);
-        if (bullet != null && bullet.owner != this) {
+        if (bullet != null && bullet.owner.getClass() != this.getClass()) {
            getWorld().removeObject(bullet);
            hit();
         }
