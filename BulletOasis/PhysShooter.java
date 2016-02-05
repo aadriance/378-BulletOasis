@@ -17,7 +17,8 @@ public class PhysShooter extends PhysWalker
     {
         super.act();
         Bullet bullet = (Bullet)getOneIntersectingObject(Bullet.class);
-        if (bullet != null && bullet.owner.getClass() != this.getClass()) {
+        if (bullet != null && bullet.owner.getClass() != this.getClass() &&
+           (!((GameWorld)getWorld()).timeFrozen || bullet.owner.getClass() == Player.class) ) {
            getWorld().removeObject(bullet);
            hit();
         }
@@ -28,12 +29,16 @@ public class PhysShooter extends PhysWalker
     }
     
     public void shoot(double x, double y) {
+        shoot(x, y, new Bullet());
+    }
+    
+    public void shoot(double x, double y, Bullet bull) {
         double dx = x - getX();
         double dy = y - getY();
         double unitScale = Math.sqrt(dx * dx + dy * dy);
         dx /= unitScale;
         dy /= unitScale;
-        Bullet bull = new Bullet(dx, dy);
+        bull.setDxDy(dx, dy);
         bull.owner = this;
         
         int offset = getImage().getWidth()/2;

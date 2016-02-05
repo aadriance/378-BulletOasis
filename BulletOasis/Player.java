@@ -23,6 +23,7 @@ public class Player extends PhysShooter
     boolean reloading = false;
     int bullets = 6;
     int idleCount = 0;
+    boolean hasMagic = true;
     
     /**
      * Act - do whatever the Player wants to do. This method is called whenever
@@ -94,6 +95,10 @@ public class Player extends PhysShooter
            {
                moveRight();
            }
+           
+        if(Greenfoot.isKeyDown("shift") && buccaneer > 0 && hasMagic) {
+            ((GameWorld)getWorld()).timeFrozen = true;
+        }
         
         if ( Greenfoot.isKeyDown("w") ) {
             flipped = false;
@@ -126,6 +131,13 @@ public class Player extends PhysShooter
         
         if(frame % 100 == 0 && buccaneer < 10) {
             buccaneer += 1;
+        }
+        
+        if(((GameWorld)getWorld()).timeFrozen && frame % 50 == 0) {
+            buccaneer -= 1;
+            if (buccaneer == 0) {
+                ((GameWorld)getWorld()).timeFrozen = false;
+            }
         }
         
         if(frame % 40 == 0 && reloading) {

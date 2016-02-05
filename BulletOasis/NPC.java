@@ -23,6 +23,11 @@ public class NPC extends PhysShooter
      */
     public void act() 
     {
+        super.act();
+        if(((GameWorld)getWorld()).timeFrozen) {
+            return;
+        }
+        
         if(getX() > 0 && getX() < getWorld().getWidth()) {
            frame += 1;
            List<Player> players = getObjectsInRange(getWorld().getHeight(), Player.class);
