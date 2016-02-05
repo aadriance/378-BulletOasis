@@ -1,9 +1,15 @@
 #BlueJ class context
 comment0.target=Bullet
 comment0.text=\n\ Write\ a\ description\ of\ class\ Bullet\ here.\n\ \n\ @author\ (your\ name)\ \n\ @version\ (a\ version\ number\ or\ a\ date)\n
-comment1.params=deltaX\ deltaY
-comment1.target=Bullet(double,\ double)
-comment2.params=
-comment2.target=void\ act()
-comment2.text=\n\ Act\ -\ do\ whatever\ the\ Bullet\ wants\ to\ do.\ This\ method\ is\ called\ whenever\n\ the\ 'Act'\ or\ 'Run'\ button\ gets\ pressed\ in\ the\ environment.\n
-numComments=3
+comment1.params=
+comment1.target=Bullet()
+comment2.params=deltaX\ deltaY
+comment2.target=Bullet(double,\ double)
+comment3.params=deltaX\ deltaY
+comment3.target=void\ setDxDy(double,\ double)
+comment4.params=
+comment4.target=void\ act()
+comment4.text=\n\ Act\ -\ do\ whatever\ the\ Bullet\ wants\ to\ do.\ This\ method\ is\ called\ whenever\n\ the\ 'Act'\ or\ 'Run'\ button\ gets\ pressed\ in\ the\ environment.\n
+comment5.params=
+comment5.target=void\ move()
+numComments=6

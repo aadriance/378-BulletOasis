@@ -15,7 +15,12 @@ public class ScrollingRandomWorld extends ScrollingWorld
      */
     public ScrollingRandomWorld()
     {
-        prepare();
+        prepare(true);
+    }
+    
+    public ScrollingRandomWorld(boolean magic)
+    {
+        prepare(magic);
     }
 
     /**
@@ -23,12 +28,13 @@ public class ScrollingRandomWorld extends ScrollingWorld
      * That is: create the initial objects and add them to the world.
      */
     
-    private void prepare()
+    private void prepare(boolean hasMagic)
     {
         
         setPaintOrder(Player.class, PhysWalker.class, Block.class);
         
         Player physwalker = new Player();
+        physwalker.hasMagic = hasMagic;
         addObject(physwalker,282,194);
         physwalker.setLocation(283,188);
 

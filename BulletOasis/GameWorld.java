@@ -8,8 +8,11 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class GameWorld extends World
 {
-    static GameWorld[] worlds = {new TitleScreen(), new Intro(), new ScrollingRandomWorld(),
-    new GotBullet(), new ScrollingRandomWorld(), new FoundBoss(), new ScrollingRandomWorld(),
+    
+    boolean timeFrozen = false;
+    
+    static GameWorld[] worlds = {new TitleScreen(), new Intro(), new ScrollingRandomWorld(false),
+    new GotBullet(), new ScrollingRandomWorld(true), new FoundBoss(), new BossLevel(),
     new Ending()};
     static int currWorld = 0;
     /**

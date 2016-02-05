@@ -23,6 +23,11 @@ public class NPC extends PhysShooter
      */
     public void act() 
     {
+        super.act();
+        if(((GameWorld)getWorld()).timeFrozen) {
+            return;
+        }
+        
         if(getX() > 0 && getX() < getWorld().getWidth()) {
            frame += 1;
            List<Player> players = getObjectsInRange(getWorld().getHeight(), Player.class);
@@ -57,5 +62,11 @@ public class NPC extends PhysShooter
                  getImage().mirrorHorizontally();
               }      
            }
+    }
+    
+    public void hit() {
+        super.hit();
+        GreenfootSound sound = new GreenfootSound("enHit.wav");
+                  sound.play(); 
     }
 }
