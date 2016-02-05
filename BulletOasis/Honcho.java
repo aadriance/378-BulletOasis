@@ -13,6 +13,7 @@ public class Honcho extends PhysShooter
     int dir = 1;
     boolean flipped = false;
     int frame = 0;
+    GreenfootSound fly = new GreenfootSound("fly.wav");
     
     /**
      * Act - do whatever the Honcho wants to do. This method is called whenever
@@ -46,6 +47,11 @@ public class Honcho extends PhysShooter
                 moveLeft();
             }
         }
+        
+        if(frame % 15 == 0) {
+            fly.setVolume(60);
+           fly.play(); 
+        }
 
         if(getX() < 20) {
             dir = 1;
@@ -59,6 +65,12 @@ public class Honcho extends PhysShooter
     
     public void die() {
         GameWorld.nextWorld();
+    }
+    
+    public void hit() {
+        super.hit();
+        GreenfootSound sound = new GreenfootSound("honchoLol.wav");
+                  sound.play(); 
     }
     
 }

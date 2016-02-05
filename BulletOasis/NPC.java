@@ -63,4 +63,10 @@ public class NPC extends PhysShooter
               }      
            }
     }
+    
+    public void hit() {
+        super.hit();
+        GreenfootSound sound = new GreenfootSound("enHit.wav");
+                  sound.play(); 
+    }
 }

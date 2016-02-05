@@ -13,6 +13,7 @@ public class Laser extends Bullet
     int currY = 0;
     int frame = 0;
     ArrayList<Bullet> lasers = new ArrayList<>();
+    static GreenfootSound sound = new GreenfootSound("laser.wav");;
     /**
      * Act - do whatever the Laser wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
@@ -31,6 +32,8 @@ public class Laser extends Bullet
     
     public Laser(double deltaX, double deltaY) {
         super(deltaX, deltaY);
+        sound.setVolume(60);
+        sound.playLoop(); 
     }
     
     public void move() {
@@ -44,9 +47,13 @@ public class Laser extends Bullet
         if (isAtEdge()) {
             removeAll();
         }
+        if(sound.isPlaying() == false) {
+            sound.playLoop();
+        }
     }
     
     public void removeAll() {
+        sound.stop();
        for(int i = 0; i < lasers.size(); i++) {
                 getWorld().removeObject(lasers.get(i));
             }

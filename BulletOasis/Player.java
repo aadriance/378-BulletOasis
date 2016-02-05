@@ -24,6 +24,7 @@ public class Player extends PhysShooter
     int bullets = 6;
     int idleCount = 0;
     boolean hasMagic = true;
+    GreenfootSound stepSnd = new GreenfootSound("step.wav");
     
     /**
      * Act - do whatever the Player wants to do. This method is called whenever
@@ -47,6 +48,7 @@ public class Player extends PhysShooter
             getWorld().addObject(subActor, getX(), getY());
             getWorld().addObject(ui, ui.getImage().getWidth()/2, ui.getImage().getHeight()/2);
             life = 10;
+            stepSnd.setVolume(60);
         }
         super.act();
         
@@ -90,14 +92,22 @@ public class Player extends PhysShooter
         if ( Greenfoot.isKeyDown("a") )
            {
                moveLeft();
+               if (frame % 15 == 0) {
+                  stepSnd.play(); 
+               }
            }
            else if ( Greenfoot.isKeyDown("d") )
            {
                moveRight();
+               if (frame % 15 == 0) {
+                  stepSnd.play(); 
+               }
            }
            
-        if(Greenfoot.isKeyDown("shift") && buccaneer > 0 && hasMagic) {
+        if(Greenfoot.isKeyDown("shift") && buccaneer > 0 && hasMagic && ((GameWorld)getWorld()).timeFrozen == false) {
             ((GameWorld)getWorld()).timeFrozen = true;
+            GreenfootSound sound = new GreenfootSound("protectMe.wav");
+            sound.play();
         }
         
         if ( Greenfoot.isKeyDown("w") ) {
@@ -131,6 +141,8 @@ public class Player extends PhysShooter
         
         if(frame % 100 == 0 && buccaneer < 10) {
             buccaneer += 1;
+            GreenfootSound sound = new GreenfootSound("bucUp.wav");
+                  sound.play(); 
         }
         
         if(((GameWorld)getWorld()).timeFrozen && frame % 50 == 0) {
@@ -142,6 +154,8 @@ public class Player extends PhysShooter
         
         if(frame % 40 == 0 && reloading) {
             bullets += 1;
+            GreenfootSound sound = new GreenfootSound("reload.wav");
+                  sound.play(); 
             if (bullets == 6) {
                 reloading = false;
             }
@@ -170,5 +184,13 @@ public class Player extends PhysShooter
         getImage().mirrorHorizontally();
        }
        getWorld().removeObject(subActor);
+       GreenfootSound shot = new GreenfootSound("failed.wav");
+       shot.play();
+    }
+    
+    public void hit() {
+        super.hit();
+        GreenfootSound shot = new GreenfootSound("hit.wav");
+        shot.play();
     }
 }
