@@ -12,6 +12,14 @@ public class TitleScreen extends GameWorld
         super(600, 400, 1, true);
         prepare();
     }
+    
+    public void act() {
+        super.act();
+        if(bg == null || bg.isPlaying() == false) {
+            bg = new GreenfootSound("Drankin_Song_titleScreen.mp3");
+            bg.playLoop();
+        }
+    }
 
     /**
      * Prepare the world for the start of the program.

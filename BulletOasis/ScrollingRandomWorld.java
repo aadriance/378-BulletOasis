@@ -22,6 +22,14 @@ public class ScrollingRandomWorld extends ScrollingWorld
     {
         prepare(magic);
     }
+    
+    public void act() {
+        super.act();
+        if(bg.isPlaying() == false) {
+            bg = new GreenfootSound("Neo_Western_level.mp3");
+            bg.playLoop();
+        }
+    }
 
     /**
      * Prepare the world for the start of the program.
@@ -30,7 +38,6 @@ public class ScrollingRandomWorld extends ScrollingWorld
     
     private void prepare(boolean hasMagic)
     {
-        
         setPaintOrder(Player.class, PhysWalker.class, Block.class);
         
         Player physwalker = new Player();

@@ -11,10 +11,11 @@ public class GameWorld extends World
     
     boolean timeFrozen = false;
     
-    static GameWorld[] worlds = {new TitleScreen(), new Intro(), new ScrollingRandomWorld(false),
-    new GotBullet(), new ScrollingRandomWorld(true), new FoundBoss(), new BossLevel(),
+    static GameWorld[] worlds = {new TitleScreen(), new Intro(), new Intro2(), new ScrollingRandomWorld(false),
+    new GotBullet(), new GotBullet2(), new ScrollingRandomWorld(true), new FoundBoss(), new BossLevel(),
     new Ending()};
     static int currWorld = 0;
+    static GreenfootSound bg;
     /**
      * Constructor for objects of class GameWorld.
      * 
@@ -33,6 +34,7 @@ public class GameWorld extends World
     }
     
     public static void nextWorld() {
+        bg.stop();
         if (currWorld < worlds.length - 1) {
             currWorld += 1;
             Greenfoot.setWorld(worlds[currWorld]);
@@ -41,6 +43,7 @@ public class GameWorld extends World
     }
     
     public static void restart() {
+        bg.stop();
          GameWorld[] newWorlds = {new TitleScreen(), new Intro(), new ScrollingRandomWorld(),
          new GotBullet(), new ScrollingRandomWorld(), new FoundBoss(), new ScrollingRandomWorld(),
          new Ending()};

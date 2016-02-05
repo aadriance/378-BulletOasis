@@ -27,4 +27,12 @@ public class ExpositionWorld extends GameWorld
         PlayGame playgame = new PlayGame();
         addObject(playgame,480,342);
     }
+    
+    public void act() {
+        super.act();
+        if(bg == null || bg.isPlaying() == false) {
+            bg = new GreenfootSound("Cattails_cutScene.mp3");
+            bg.playLoop();
+        }
+    }
 }

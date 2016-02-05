@@ -34,4 +34,12 @@ public class BossLevel extends GameWorld
         Player player = new Player();
         addObject(player,287,360);
     }
+    
+    public void act() {
+        super.act();
+        if(bg == null || bg.isPlaying() == false) {
+            bg = new GreenfootSound("Robo-Western_boss.mp3");
+            bg.playLoop();
+        }
+    }
 }
