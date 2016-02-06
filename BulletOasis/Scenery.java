@@ -8,7 +8,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class Scenery extends ScrollingActor
 {
-    String[] imageList = {"beeper.png", "button-blue.png"};
+    String[] imageList = {"cactus.png", "shrub.png"};
     public Scenery() {
         setImage(imageList[Greenfoot.getRandomNumber(imageList.length)]);
     }

@@ -53,7 +53,7 @@ public class ScrollingRandomWorld extends ScrollingWorld
             addObject(temp, i, getHeight() - temp.getImage().getHeight()/2);
             if (Greenfoot.getRandomNumber(100) > 90) {
                 Scenery scenery = new Scenery();
-                addObject(scenery, i, getHeight() - temp.getImage().getHeight()/2 - scenery.getImage().getHeight()/2);
+                addObject(scenery, i, getHeight() - temp.getImage().getHeight() - scenery.getImage().getHeight()/2);
             }
             
             if (Greenfoot.getRandomNumber(100) > 95) {
