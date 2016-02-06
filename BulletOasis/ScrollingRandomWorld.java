@@ -67,7 +67,7 @@ public class ScrollingRandomWorld extends ScrollingWorld
             
         }
         LevelEnd checkPoint = new LevelEnd();
-        addObject(checkPoint, getScrollSize() + getWidth() - checkPoint.getImage().getWidth() * 2, getHeight() -  checkPoint.getImage().getHeight()/2);
+        addObject(checkPoint, getScrollSize() + getWidth() - checkPoint.getImage().getWidth(), getHeight() -  checkPoint.getImage().getHeight());
     }
     
     private void spawnPlatform(int startX, int startY) {
