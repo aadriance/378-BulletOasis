@@ -52,6 +52,10 @@ public class Honcho extends PhysShooter
             fly.setVolume(60);
            fly.play(); 
         }
+        
+        if(frame%60 == 0){
+            sunburst();
+        }
 
         if(getX() < 20) {
             dir = 1;
@@ -61,6 +65,15 @@ public class Honcho extends PhysShooter
         }
         super.act();
         a = 0;
+    }
+    
+    public void sunburst(){
+        int baseAng = Greenfoot.getRandomNumber(359);
+        int num = 10;
+        
+        for(int i=0; i<num; i++){
+            getWorld().addObject(new sunBullet(1, 10, 0.04, baseAng + 360*i/num, new GreenfootImage("images/bullet1.png"), this), getX(), getY());
+        }
     }
     
     public void die() {
