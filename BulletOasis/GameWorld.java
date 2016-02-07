@@ -11,9 +11,18 @@ public class GameWorld extends World
     
     boolean timeFrozen = false;
     
-    static GameWorld[] worlds = {new TitleScreen(), new Intro(), new Intro2(), new ScrollingRandomWorld(false),
-    new GotBullet(), new GotBullet2(), new ScrollingRandomWorld(true), new FoundBoss(), new BossLevel(),
-    new Ending()};
+    static GameWorld[] worlds = {
+        new TitleScreen(),
+        new Intro(),
+        new Intro2(),
+        new ScrollingRandomWorld(false),
+        new GotBullet(),
+        new GotBullet2(),
+        new ScrollingRandomWorld(true),
+        new FoundBoss(),
+        new BossLevel(),
+        new Ending()
+    };
     static int currWorld = 0;
     static GreenfootSound bg;
     /**
@@ -44,7 +53,7 @@ public class GameWorld extends World
     
     public static void restart() {
         bg.stop();
-         GameWorld[] newWorlds = {
+        GameWorld[] newWorlds = {
              new TitleScreen(), 
              new Intro(), 
              new ScrollingRandomWorld(),
@@ -53,10 +62,9 @@ public class GameWorld extends World
              new FoundBoss(), 
              new ScrollingRandomWorld(),
              new Ending()
-         };
-         worlds = newWorlds;
+        };
+        worlds = newWorlds;
         if (currWorld < worlds.length - 1) {
-            currWorld = 0;
             Greenfoot.setWorld(worlds[0]);
         
         }

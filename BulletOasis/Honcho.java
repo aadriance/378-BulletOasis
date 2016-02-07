@@ -12,8 +12,9 @@ public class Honcho extends PhysShooter
     
     int dir = 1;
     boolean flipped = false;
-    int frame = 0;
+    int frame = 0, sunUp = -80;
     GreenfootSound fly = new GreenfootSound("fly.wav");
+    int prevAtk = -1;
     
     /**
      * Act - do whatever the Honcho wants to do. This method is called whenever
@@ -21,9 +22,8 @@ public class Honcho extends PhysShooter
      */
     public void act() 
     {
-        
         frame += 1;
-        int temp = getY();
+        
         if(dir == 1 && flipped == true) {
             getImage().mirrorHorizontally();
             flipped = false;
@@ -34,10 +34,11 @@ public class Honcho extends PhysShooter
         }
         
         List<Player> players = getObjectsInRange(getWorld().getHeight(), Player.class);
+        /*
         if(players != null && players.size() > 0 && frame%40 == 0 &&
            Greenfoot.getRandomNumber(100) > 65 && frame % 20 == 0) {
                shoot(players.get(0).getX(), players.get(0).getY(), new Laser(0, 0));
-        }
+        }*/
         
         if(frame % 2 == 1) {
             if (dir == 1) {
@@ -56,6 +57,12 @@ public class Honcho extends PhysShooter
         if(frame%60 == 0){
             sunburst();
         }
+        
+        sunUp++;
+        if(sunUp == 180){
+            sun();
+            sunUp = 0;
+        }
 
         if(getX() < 20) {
             dir = 1;
@@ -69,11 +76,21 @@ public class Honcho extends PhysShooter
     
     public void sunburst(){
         int baseAng = Greenfoot.getRandomNumber(359);
-        int num = 10;
+        int num = 5;
         
         for(int i=0; i<num; i++){
-            getWorld().addObject(new sunBullet(1, 10, 0.04, baseAng + 360*i/num, new GreenfootImage("images/bullet1.png"), this), getX(), getY());
+            getWorld().addObject(new sunBullet(1, 2, 0.04, baseAng + 360*i/num, new GreenfootImage("images/sunbullet1.png"), new GreenfootImage("images/sunbullet2.png"), this), getX(), getY());
         }
+    }
+    
+    public void sun(){
+        int r = Greenfoot.getRandomNumber(4);
+        while(r == prevAtk){
+            r = Greenfoot.getRandomNumber(4);
+        }
+        prevAtk = r;
+        sun s = new sun(this, r);
+        getWorld().addObject(s, getX(), getY());
     }
     
     public void die() {
