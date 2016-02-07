@@ -14,6 +14,7 @@ public class Honcho extends PhysShooter
     boolean flipped = false;
     int frame = 0, sunUp = -80;
     GreenfootSound fly = new GreenfootSound("fly.wav");
+    GreenfootSound boom = new GreenfootSound("sounds/boom.wav");
     int prevAtk = -1;
     
     /**
@@ -89,6 +90,7 @@ public class Honcho extends PhysShooter
             r = Greenfoot.getRandomNumber(4);
         }
         prevAtk = r;
+        boom.play();
         sun s = new sun(this, r);
         getWorld().addObject(s, getX(), getY());
     }
