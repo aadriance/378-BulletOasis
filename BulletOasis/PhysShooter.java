@@ -1,4 +1,5 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
+import java.util.List;
 
 /**
  * Write a description of class PhysShooter here.
@@ -17,12 +18,14 @@ public class PhysShooter extends PhysWalker
     public void act() 
     {
         super.act();
-        Bullet bullet = (Bullet)getOneIntersectingObject(Bullet.class);
-        if (bullet != null && bullet.owner.getClass() != this.getClass() &&
-           (!((GameWorld)getWorld()).timeFrozen || bullet.owner.getClass() == Player.class) ) {
-           getWorld().removeObject(bullet);
-           hit();
-        }
+        List<Bullet> bullets = getIntersectingObjects(Bullet.class);
+        for(Bullet bullet: bullets) {
+            if (bullet != null && bullet.owner.getClass() != this.getClass() &&
+            (!((GameWorld)getWorld()).timeFrozen || bullet.owner.getClass() == Player.class) ) {
+                getWorld().removeObject(bullet);
+                hit();
+            }
+    }
     }
     
     public void shoot(MouseInfo mouse) {

@@ -55,12 +55,12 @@ public class Honcho extends PhysShooter
            fly.play(); 
         }
         
-        if(frame%60 == 0){
+        if(frame%60 == 0 && !((GameWorld)getWorld()).timeFrozen){
             sunburst();
         }
         
         sunUp++;
-        if(sunUp == 180){
+        if(sunUp >= 180 && !((GameWorld)getWorld()).timeFrozen){
             sun();
             sunUp = 0;
         }
@@ -102,7 +102,8 @@ public class Honcho extends PhysShooter
     public void hit() {
         super.hit();
         GreenfootSound sound = new GreenfootSound("honchoLol.wav");
-                  sound.play(); 
+        sound.play(); 
+        System.out.println("POW");
     }
     
 }
