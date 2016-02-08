@@ -105,12 +105,6 @@ public class Player extends PhysShooter
                   stepSnd.play(); 
                }
            }
-           
-        if(Greenfoot.isKeyDown("shift") && buccaneer > 0 && hasMagic && ((GameWorld)getWorld()).timeFrozen == false) {
-            ((GameWorld)getWorld()).timeFrozen = true;
-            GreenfootSound sound = new GreenfootSound("protectMe.wav");
-            sound.play();
-        }
         
         if ( Greenfoot.isKeyDown("w") ) {
             flipped = false;
@@ -168,6 +162,14 @@ public class Player extends PhysShooter
         }
         else {
             idleCount = 0;
+        }
+        
+        if(Greenfoot.isKeyDown("shift") && buccaneer > 0 && hasMagic && ((GameWorld)getWorld()).timeFrozen == false) {
+            ((GameWorld)getWorld()).timeFrozen = true;
+            GreenfootSound sound = new GreenfootSound("protectMe.wav");
+            sound.setVolume(100);
+            sound.play();
+            subActor.setImage("player-time.png");
         }
 
         subActor.setLocation(getX() + dir * 5, getY());

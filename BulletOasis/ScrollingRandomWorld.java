@@ -27,6 +27,7 @@ public class ScrollingRandomWorld extends ScrollingWorld
         super.act();
         if(bg.isPlaying() == false) {
             bg = new GreenfootSound("Neo_Western_level.mp3");
+            bg.setVolume(85);
             bg.playLoop();
         }
     }

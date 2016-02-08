@@ -38,7 +38,7 @@ public class PhysShooter extends PhysWalker
     }
     
     public void shoot(double x, double y, Bullet bull) {
-        shot.setVolume(80);
+        shot.setVolume(60);
         shot.play();
         double dx = x - getX();
         double dy = y - getY();
