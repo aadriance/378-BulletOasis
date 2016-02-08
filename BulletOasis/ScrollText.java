@@ -7,15 +7,11 @@ import java.awt.Color;
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class Textbox extends Actor
+public class ScrollText extends ScrollingActor
 {
-    public Textbox(String text, int size, boolean whiteText){
+    public ScrollText(String text){
         GreenfootImage img;
-        if(whiteText){
-            img = new GreenfootImage(text, size, Color.white, null);
-        }else{
-            img = new GreenfootImage(text, size, null, null);
-        }
+        img = new GreenfootImage(text, 20, null, null);
         this.setImage(img);
     }
 }

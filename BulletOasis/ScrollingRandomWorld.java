@@ -40,6 +40,14 @@ public class ScrollingRandomWorld extends ScrollingWorld
     {
         setPaintOrder(Player.class, PhysWalker.class, Block.class);
         
+        if(hasMagic){
+            ScrollText st = new ScrollText("When Buccanner meter is full, press SHIFT to stop time");
+            addObject(st, 400, 100);
+        }else{
+            ScrollText st = new ScrollText("WASD. Aim and shoot with mouse");
+            addObject(st, 400, 100);
+        }
+        
         Player physwalker = new Player();
         physwalker.hasMagic = hasMagic;
         addObject(physwalker,282,194);

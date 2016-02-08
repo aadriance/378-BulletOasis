@@ -27,9 +27,8 @@ public class ExpositionWorld extends GameWorld
     {
         /*PlayGame playgame = new PlayGame();
         addObject(playgame,480,342);*/
-        textbox textbox = new textbox("Click to continue", 20, true);
+        Textbox textbox = new Textbox("Click to continue", 20, true);
         addObject(textbox,530,380);
-        textbox.setLocation(530,380);
     }
     
     public void act() {
@@ -37,9 +36,6 @@ public class ExpositionWorld extends GameWorld
         if(bg == null || bg.isPlaying() == false) {
             bg = new GreenfootSound("Cattails_cutScene.mp3");
             bg.playLoop();
-        }
-        if(Greenfoot.mouseClicked(null)){
-            GameWorld.nextWorld();
         }
     }
 }
