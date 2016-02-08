@@ -64,9 +64,10 @@ public class GameWorld extends World
              new Ending()
         };
         worlds = newWorlds;
-        if (currWorld < worlds.length - 1) {
+        /*if (currWorld < worlds.length - 1) {
             Greenfoot.setWorld(worlds[0]);
         
-        }
+        }*/
+        Greenfoot.setWorld(worlds[0]);
     }
 }

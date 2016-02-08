@@ -1,4 +1,5 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
+import java.awt.Color;
 
 /**
  * Write a description of class ExpositionWorld here.
@@ -24,8 +25,11 @@ public class ExpositionWorld extends GameWorld
      */
     private void prepare()
     {
-        PlayGame playgame = new PlayGame();
-        addObject(playgame,480,342);
+        /*PlayGame playgame = new PlayGame();
+        addObject(playgame,480,342);*/
+        textbox textbox = new textbox("Click to continue", 20, true);
+        addObject(textbox,530,380);
+        textbox.setLocation(530,380);
     }
     
     public void act() {
@@ -33,6 +37,9 @@ public class ExpositionWorld extends GameWorld
         if(bg == null || bg.isPlaying() == false) {
             bg = new GreenfootSound("Cattails_cutScene.mp3");
             bg.playLoop();
+        }
+        if(Greenfoot.mouseClicked(null)){
+            GameWorld.nextWorld();
         }
     }
 }

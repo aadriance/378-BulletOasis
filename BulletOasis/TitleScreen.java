@@ -19,6 +19,9 @@ public class TitleScreen extends GameWorld
             bg = new GreenfootSound("Drankin_Song_titleScreen.mp3");
             bg.playLoop();
         }
+        if(Greenfoot.mouseClicked(null)){
+            Greenfoot.setWorld(new Intro());
+        }
     }
 
     /**
@@ -27,8 +30,16 @@ public class TitleScreen extends GameWorld
      */
     private void prepare()
     {
-        PlayGame button = new PlayGame();
+
+        /*PlayGame button = new PlayGame();
         addObject(button,241,178);
-        button.setLocation(295,204);
+        button.setLocation(295,204);*/
+        textbox title = new textbox("MAGIC COWBOY: BULLET OASIS", 40, false);
+        addObject(title,300,100);
+        title.setLocation(300,100);
+        
+        textbox t = new textbox("Click to start", 20, false);
+        addObject(t,300,201);
+        t.setLocation(300,200);
     }
 }
