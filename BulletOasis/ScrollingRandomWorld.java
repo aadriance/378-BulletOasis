@@ -41,12 +41,12 @@ public class ScrollingRandomWorld extends ScrollingWorld
         setPaintOrder(Player.class, PhysWalker.class, Block.class);
         
         if(hasMagic){
-            ScrollText st = new ScrollText("When Buccanner meter is full, press SHIFT to stop time");
+            ScrollText st = new ScrollText("When Buccanner has charge, press SHIFT to stop time");
             addObject(st, 400, 100);
         }else{
             ScrollText st = new ScrollText("WASD. Aim and shoot with mouse");
             addObject(st, 400, 100);
-            ScrollText st2 = new ScrollText("Bullets will reload after 6 shots");
+            ScrollText st2 = new ScrollText("Bullets will reload after 6 shots, or r to reload");
             addObject(st2, 400, 150);
         }
         

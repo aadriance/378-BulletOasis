@@ -17,6 +17,11 @@ public class Honcho extends PhysShooter
     GreenfootSound boom = new GreenfootSound("sounds/boom.wav");
     int prevAtk = -1;
     
+    public Honcho() {
+        super();
+        life = 6;
+    }
+    
     /**
      * Act - do whatever the Honcho wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
@@ -24,7 +29,6 @@ public class Honcho extends PhysShooter
     public void act() 
     {
         frame += 1;
-        
         if(dir == 1 && flipped == true) {
             getImage().mirrorHorizontally();
             flipped = false;

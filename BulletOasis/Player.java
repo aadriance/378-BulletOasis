@@ -91,6 +91,7 @@ public class Player extends PhysShooter
         
         if ( Greenfoot.isKeyDown("a") )
            {
+               idleCount = 0;
                moveLeft();
                if (frame % 15 == 0) {
                   stepSnd.play(); 
@@ -98,6 +99,7 @@ public class Player extends PhysShooter
            }
            else if ( Greenfoot.isKeyDown("d") )
            {
+               idleCount = 0;
                moveRight();
                if (frame % 15 == 0) {
                   stepSnd.play(); 

@@ -22,6 +22,7 @@ public class PhysShooter extends PhysWalker
         for(Bullet bullet: bullets) {
             if (bullet != null && bullet.owner.getClass() != this.getClass() &&
             (!((GameWorld)getWorld()).timeFrozen || bullet.owner.getClass() == Player.class) ) {
+                if(bullet.getClass() != sunLaser.class || bullet.getClass() != sun.class)
                 getWorld().removeObject(bullet);
                 hit();
             }
