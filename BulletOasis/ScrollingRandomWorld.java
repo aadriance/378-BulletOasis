@@ -46,6 +46,8 @@ public class ScrollingRandomWorld extends ScrollingWorld
         }else{
             ScrollText st = new ScrollText("WASD. Aim and shoot with mouse");
             addObject(st, 400, 100);
+            ScrollText st2 = new ScrollText("Bullets will reload after 6 shots");
+            addObject(st2, 400, 150);
         }
         
         Player physwalker = new Player();
