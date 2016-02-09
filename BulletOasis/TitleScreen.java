@@ -36,10 +36,11 @@ public class TitleScreen extends GameWorld
         button.setLocation(295,204);*/
         Textbox title = new Textbox("MAGIC COWBOY: BULLET OASIS", 40, false);
         addObject(title,300,100);
-        title.setLocation(300,100);
         
         Textbox t = new Textbox("Click to start", 20, false);
         addObject(t,300,201);
-        t.setLocation(300,200);
+        
+        Textbox t2 = new Textbox("Andrew Adriance, Gideon Wong", 15, false);
+        addObject(t2,300,350);
     }
 }

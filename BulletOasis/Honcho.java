@@ -107,7 +107,6 @@ public class Honcho extends PhysShooter
         super.hit();
         GreenfootSound sound = new GreenfootSound("honchoLol.wav");
         sound.play(); 
-        System.out.println("POW");
     }
     
 }
