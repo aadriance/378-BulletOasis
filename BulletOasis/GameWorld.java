@@ -42,7 +42,9 @@ public class GameWorld extends World
     public static void nextWorld() {
         bg.stop();
         if (currWorld < worlds.length) {
+            //System.out.println("currWorld is "+currWorld);
             currWorld ++;
+            //System.out.println("   now currWorld is "+currWorld);
             Greenfoot.setWorld(worlds[currWorld]);
         }
     }

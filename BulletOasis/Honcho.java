@@ -19,7 +19,7 @@ public class Honcho extends PhysShooter
     
     public Honcho() {
         super();
-        life = 6;
+        life = 12;
     }
     
     /**

@@ -42,8 +42,10 @@ public class ScrollingRandomWorld extends ScrollingWorld
         setPaintOrder(Player.class, PhysWalker.class, Block.class);
         
         if(hasMagic){
-            ScrollText st = new ScrollText("Press SHIFT to stop time and become invulnerable. Expends all accumulated Buccaneer.");
+            ScrollText st = new ScrollText("Press SHIFT to stop time and become invulnerable.");
             addObject(st, 400, 100);
+            ScrollText st2 = new ScrollText("Expends all accumulated Buccaneer.");
+            addObject(st2, 400, 15000);
         }else{
             ScrollText st = new ScrollText("WASD. Aim and shoot with mouse");
             addObject(st, 400, 100);
