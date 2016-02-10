@@ -1,5 +1,5 @@
 #Greenfoot properties
-#Wed Feb 10 15:15:34 PST 2016
+#Wed Feb 10 15:10:37 PST 2016
 target24.type=ClassTarget
 target16.name=Bullet
 target11.typeParameters=
@@ -407,7 +407,7 @@ dependency28.to=Player
 target30.typeParameters=
 dependency55.type=UsesDependency
 target18.type=ClassTarget
-editor.swing.0.height=700
+editor.swing.0.height=754
 dependency30.type=UsesDependency
 class.GameOver.superclass=GameWorld
 target21.showInterface=false
@@ -456,7 +456,7 @@ target27.y=310
 target27.x=10
 target34.typeParameters=
 dependency58.to=Player
-editor.swing.0.width=701
+editor.swing.0.width=1382
 target29.naviview.expanded=true
 target29.height=50
 dependency6.from=ScrollingWorld
@@ -595,8 +595,8 @@ target26.showInterface=false
 class.UI.superclass=greenfoot.Actor
 target28.name=sunLaser
 dependency66.to=Intro
-editor.swing.0.y=36
-editor.swing.0.x=29
+editor.swing.0.y=-8
+editor.swing.0.x=-8
 mainWindow.height=609
 dependency8.from=ScrollingWorld
 target28.height=50
