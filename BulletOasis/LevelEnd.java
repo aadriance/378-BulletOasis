@@ -15,6 +15,7 @@ public class LevelEnd extends ScrollingActor
     public void act() 
     {
         if(getOneIntersectingObject(PhysWalker.class) != null) {
+            System.out.println("sign touched");
             GameWorld.nextWorld();
         }
     }    

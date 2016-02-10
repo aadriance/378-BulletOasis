@@ -15,6 +15,7 @@ public class ScrollingRandomWorld extends ScrollingWorld
      */
     public ScrollingRandomWorld()
     {
+        removeObjects(getObjects(null));
         prepare(true);
     }
     
