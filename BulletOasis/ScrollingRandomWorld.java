@@ -59,23 +59,31 @@ public class ScrollingRandomWorld extends ScrollingWorld
         physwalker.setLocation(283,188);
 
         setScrollee(physwalker);
-       
+        int randWeight = 0;
         Block temp;
         for(int i = 0; i <= getScrollSize() + getWidth(); i += temp.getImage().getWidth()) {
             temp = new Block("sand-1.png");
             addObject(temp, i, getHeight() - temp.getImage().getHeight()/2);
-            if (Greenfoot.getRandomNumber(100) > 90) {
+            if (Greenfoot.getRandomNumber(100) > 75) {
                 Scenery scenery = new Scenery();
                 addObject(scenery, i, getHeight() - temp.getImage().getHeight() - scenery.getImage().getHeight()/2);
             }
             
-            if (Greenfoot.getRandomNumber(100) > 95) {
+            if (Greenfoot.getRandomNumber(98) + randWeight > 94) {
+                randWeight = 0;
                 NPC enemy = new NPC();
                 addObject(enemy, i, getHeight() - temp.getImage().getHeight()/2 - enemy.getImage().getHeight());
             }
+            else {
+                randWeight += 1;
+            }
             
-            if (Greenfoot.getRandomNumber(100) > 85) {
-                spawnPlatform(i, getHeight()/2 + 60);
+            if (Greenfoot.getRandomNumber(96) + randWeight > 94) {
+                spawnPlatform(i, getHeight()/2 + 75);
+                randWeight = 0;
+            }
+            else {
+                randWeight += 1;
             }
             
         }
@@ -89,7 +97,7 @@ public class ScrollingRandomWorld extends ScrollingWorld
             Block plat = new Block("sand-2.png");
             addObject(plat, startX + offset, startY);
             
-            if (Greenfoot.getRandomNumber(100) > 75) {
+            if (Greenfoot.getRandomNumber(100) > 83) {
                 NPC enemy = new NPC();
                 addObject(enemy, startX + offset, startY - plat.getImage().getHeight()/2 - enemy.getImage().getHeight());
             }

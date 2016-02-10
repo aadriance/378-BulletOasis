@@ -14,7 +14,8 @@ public class NPC extends PhysShooter
     
     public NPC() {
         super();
-        canCollide = false;
+        canCollide = true;
+        life = 2;
     }
     
     /**
@@ -41,8 +42,8 @@ public class NPC extends PhysShooter
            }
         
         
-           if(players != null && players.size() > 0 && frame%40 == 0 &&
-           Greenfoot.getRandomNumber(100) > 65 && !dead) {
+           if(players != null && players.size() > 0 && frame%28 == 0 &&
+           Greenfoot.getRandomNumber(100) > 55 && !dead) {
                shoot(players.get(0).getX(), players.get(0).getY());
            }
            
