@@ -8,14 +8,15 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class GameOver extends GameWorld
 {
-
-    /**
-     * Constructor for objects of class GameOver.
-     * 
-     */
-    public GameOver()
-    {
-        Actor button = new TryAgain();
-        addObject(button, getWidth()/2, getHeight()/2);
+    
+    public void act() {
+        super.act();
+        if(bg.isPlaying()){
+            bg.stop();
+        }
+        if(Greenfoot.mouseClicked(null)){
+            GameWorld.restart();
+            Greenfoot.setWorld(new TitleScreen());
+        }
     }
 }
