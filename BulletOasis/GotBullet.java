@@ -29,6 +29,11 @@ public class GotBullet extends ExpositionWorld
     }
     
     public void act(){
+        super.act();
+        if(bg == null || bg.isPlaying() == false) {
+            bg = new GreenfootSound("Cattails_cutScene.mp3");
+            bg.playLoop();
+        }
         if(Greenfoot.mouseClicked(null)){
             i++;
             if(i < ns.length){

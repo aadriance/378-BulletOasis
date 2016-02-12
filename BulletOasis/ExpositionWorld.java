@@ -33,9 +33,11 @@ public class ExpositionWorld extends GameWorld
     
     public void act() {
         super.act();
+        
         if(bg == null || bg.isPlaying() == false) {
             bg = new GreenfootSound("Cattails_cutScene.mp3");
             bg.playLoop();
         }
+
     }
 }

@@ -51,6 +51,7 @@ public class GameWorld extends World
     
     public static void restart() {
         bg.stop();
+        bg = null;
         GameWorld[] newWorlds = {
              new Intro(), 
              new ScrollingRandomWorld(false),

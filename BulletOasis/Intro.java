@@ -31,6 +31,7 @@ public class Intro extends ExpositionWorld
     }
     
     public void act(){
+        super.act();
         if(Greenfoot.mouseClicked(null)){
             i++;
             if(i < ns.length){
