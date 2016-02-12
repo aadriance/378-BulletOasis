@@ -16,6 +16,8 @@ public class Honcho extends PhysShooter
     GreenfootSound fly = new GreenfootSound("fly.wav");
     GreenfootSound boom = new GreenfootSound("sounds/boom.wav");
     int prevAtk = -1;
+    GreenfootImage health = new GreenfootImage(300, 100);
+    Actor healthy = new SubImage();
     
     public Honcho() {
         super();
@@ -28,6 +30,7 @@ public class Honcho extends PhysShooter
      */
     public void act() 
     {
+        drawHealth();
         frame += 1;
         if(dir == 1 && flipped == true) {
             getImage().mirrorHorizontally();
@@ -105,8 +108,23 @@ public class Honcho extends PhysShooter
     
     public void hit() {
         super.hit();
-        GreenfootSound sound = new GreenfootSound("honchoLol.wav");
+        String sndName;
+        if(life == 0){
+            sndName = "honchoDed.wav";
+        }
+        else {
+            sndName = "honchoLol.wav";
+        }
+        GreenfootSound sound = new GreenfootSound(sndName);
         sound.play(); 
+    }
+    
+    public void drawHealth() {
+        health.drawString("Health: " + ((Integer)life).toString(), 125, 30);
+        healthy.setImage(health);
+        getWorld().removeObject(healthy);
+        getWorld().addObject(healthy, getX(), getY());
+        
     }
     
 }
