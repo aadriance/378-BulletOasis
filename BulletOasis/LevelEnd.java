@@ -17,7 +17,6 @@ public class LevelEnd extends ScrollingActor
         Actor player = getOneIntersectingObject(Player.class);
         if( player != null) {
             player.setLocation(-10,-10);
-            System.out.println("sign touched");
             GameWorld.nextWorld();
         }
     }    
