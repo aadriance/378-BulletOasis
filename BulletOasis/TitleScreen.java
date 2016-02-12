@@ -20,7 +20,7 @@ public class TitleScreen extends GameWorld
             bg.playLoop();
         }
         if(Greenfoot.mouseClicked(null)){
-            Greenfoot.setWorld(new Intro());
+            GameWorld.restart();
         }
     }
 
