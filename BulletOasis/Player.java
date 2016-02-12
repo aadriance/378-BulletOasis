@@ -165,16 +165,16 @@ public class Player extends PhysShooter
             idleCount = 0;
         }
         
-        if(Greenfoot.isKeyDown("shift") && buccaneer > 0 && hasMagic && ((GameWorld)getWorld()).timeFrozen == false) {
+        if (Greenfoot.isKeyDown("shift") && ((GameWorld)getWorld()).timeFrozen == true) {
+           ((GameWorld)getWorld()).timeFrozen = false; 
+        }
+        else if(Greenfoot.isKeyDown("shift") && buccaneer > 0 && hasMagic && ((GameWorld)getWorld()).timeFrozen == false) {
             ((GameWorld)getWorld()).timeFrozen = true;
             protectSnd.setVolume(100);
             if(!protectSnd.isPlaying()){
                protectSnd.play();
             }
             subActor.setImage("player-time.png");
-        }
-        else if (Greenfoot.isKeyDown("shift")) {
-           ((GameWorld)getWorld()).timeFrozen = false; 
         }
 
         subActor.setLocation(getX() + dir * 5, getY());
