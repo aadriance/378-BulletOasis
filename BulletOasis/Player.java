@@ -25,6 +25,7 @@ public class Player extends PhysShooter
     int idleCount = 0;
     boolean hasMagic = true;
     GreenfootSound stepSnd = new GreenfootSound("step.wav");
+    GreenfootSound protectSnd = new GreenfootSound("protectMe.wav");
     
     /**
      * Act - do whatever the Player wants to do. This method is called whenever
@@ -89,7 +90,7 @@ public class Player extends PhysShooter
             return;
         }
         
-        if ( Greenfoot.isKeyDown("a") )
+        if ( Greenfoot.isKeyDown("a") && getX() > 0 )
            {
                idleCount = 0;
                moveLeft();
@@ -97,7 +98,7 @@ public class Player extends PhysShooter
                   stepSnd.play(); 
                }
            }
-           else if ( Greenfoot.isKeyDown("d") )
+           else if ( Greenfoot.isKeyDown("d") && getX() < getWorld().getWidth() )
            {
                idleCount = 0;
                moveRight();
@@ -135,13 +136,13 @@ public class Player extends PhysShooter
                subActor.getImage().mirrorHorizontally();
         }
         
-        if(frame % 100 == 0 && buccaneer < 10) {
+        if(frame % 100 == 0 && buccaneer < 10 && ((GameWorld)getWorld()).timeFrozen == false) {
             buccaneer += 1;
             GreenfootSound sound = new GreenfootSound("bucUp.wav");
                   sound.play(); 
         }
         
-        if(((GameWorld)getWorld()).timeFrozen && frame % 50 == 0) {
+        if(((GameWorld)getWorld()).timeFrozen && frame % 45 == 0) {
             buccaneer -= 1;
             if (buccaneer == 0) {
                 ((GameWorld)getWorld()).timeFrozen = false;
@@ -166,10 +167,14 @@ public class Player extends PhysShooter
         
         if(Greenfoot.isKeyDown("shift") && buccaneer > 0 && hasMagic && ((GameWorld)getWorld()).timeFrozen == false) {
             ((GameWorld)getWorld()).timeFrozen = true;
-            GreenfootSound sound = new GreenfootSound("protectMe.wav");
-            sound.setVolume(100);
-            sound.play();
+            protectSnd.setVolume(100);
+            if(!protectSnd.isPlaying()){
+               protectSnd.play();
+            }
             subActor.setImage("player-time.png");
+        }
+        else if (Greenfoot.isKeyDown("shift")) {
+           ((GameWorld)getWorld()).timeFrozen = false; 
         }
 
         subActor.setLocation(getX() + dir * 5, getY());

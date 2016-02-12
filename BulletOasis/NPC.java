@@ -42,8 +42,8 @@ public class NPC extends PhysShooter
            }
         
         
-           if(players != null && players.size() > 0 && frame%28 == 0 &&
-           Greenfoot.getRandomNumber(100) > 55 && !dead) {
+           if(players != null && players.size() > 0 && frame%30 == 0 &&
+           Greenfoot.getRandomNumber(100) > 75 && !dead) {
                shoot(players.get(0).getX(), players.get(0).getY());
            }
            
