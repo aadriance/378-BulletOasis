@@ -59,8 +59,9 @@ public class ScrollingRandomWorld extends ScrollingWorld
         physwalker.setLocation(283,188);
 
         setScrollee(physwalker);
-        int randWeight = 0;
+        double randWeight = 0;
         Block temp;
+        boolean justSpawned = false;
         for(int i = 0; i <= getScrollSize() + getWidth(); i += temp.getImage().getWidth()) {
             temp = new Block("sand-1.png");
             addObject(temp, i, getHeight() - temp.getImage().getHeight()/2);
@@ -69,13 +70,14 @@ public class ScrollingRandomWorld extends ScrollingWorld
                 addObject(scenery, i, getHeight() - temp.getImage().getHeight() - scenery.getImage().getHeight()/2);
             }
             
-            if (Greenfoot.getRandomNumber(98) + randWeight > 94) {
+            if (Greenfoot.getRandomNumber(98) + randWeight > 94 && !justSpawned) {
                 randWeight = 0;
                 NPC enemy = new NPC();
                 addObject(enemy, i, getHeight() - temp.getImage().getHeight()/2 - enemy.getImage().getHeight());
-            }
-            else {
-                randWeight += 1;
+                justSpawned = true;
+            }else {
+                randWeight += 0.1;
+                justSpawned = false;
             }
             
             if (Greenfoot.getRandomNumber(96) + randWeight > 94) {
@@ -93,13 +95,17 @@ public class ScrollingRandomWorld extends ScrollingWorld
     
     private void spawnPlatform(int startX, int startY) {
         int offset = 0;
+        boolean justSpawned = false;
         for(int i = 0; i < 4; i++) {
             Block plat = new Block("sand-2.png");
             addObject(plat, startX + offset, startY);
             
-            if (Greenfoot.getRandomNumber(100) > 83) {
+            if (Greenfoot.getRandomNumber(100) > 83 && !justSpawned) {
                 NPC enemy = new NPC();
+                justSpawned = true;
                 addObject(enemy, startX + offset, startY - plat.getImage().getHeight()/2 - enemy.getImage().getHeight());
+            }else{
+                justSpawned = false;
             }
             
             offset += plat.getImage().getWidth();
